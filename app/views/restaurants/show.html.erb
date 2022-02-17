@@ -1,0 +1,25 @@
+<br>
+<%= link_to "More restaurants", restaurants_path %>
+<br>
+<h1><%= @restaurant.name%> Restaurant the best choice 🤗</h1>
+<div class = "container">
+  <i><%= @restaurant.address%> |-| <%= @restaurant.category %></i>
+  <p><%= @restaurant.phone_number %></p>
+  <strong>!!!!! <%= link_to "DELETE restaurant?", restaurant_path(@restaurant), method: :delete, class: "btn btn-success"  %> !!!!!</strong>
+</div>
+<%= link_to 'reviews no fun here', new_restaurant_review_path(@restaurant) %>
+
+<!-- lister tous les com's direct ici car ces lier avec mon restaurant.reviews (activeRecord)-->
+<div class = "container">
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item">
+      <%= review.content %>
+      <%= link_to "Remove",
+                  review_path(review),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+    </li>
+    <% end %>
+  </ul>
+</div>

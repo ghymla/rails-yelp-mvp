@@ -1,0 +1,12 @@
+<br>
+<br>
+<main class="container">
+  <h1>great restaurants !!</h1>
+  <ul class = "mt-5">
+    <% @restaurants.each do |restaurant| %>
+      <li><%= restaurant.name %> -- <%= link_to "le saviez vous ?", restaurant_path(restaurant)%></li>
+      <i>///// <%= link_to "EDIT restaurant?", edit_restaurant_path(restaurant) %> /////</i>
+    <% end %>
+  </ul>
+  <%= link_to "NEW restaurant?", new_restaurant_path %>
+</main>
